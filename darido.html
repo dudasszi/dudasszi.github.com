@@ -1,0 +1,41 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>untitled</title>
+	<meta name="generator" content="TextMate http://macromates.com/">
+	<meta name="author" content="lalyos">
+	<!-- Date: 2012-04-12 -->
+	<script src="http://code.jquery.com/jquery-latest.js"></script>
+	
+</head>
+<body>
+	
+	<div id="content" style="background: #eee; border: 1px solid #ccc; font: 11px/18px Verdana; margin: 0 auto; width: 900px; padding: 15px;">
+		Konrad's darido events:
+		<ul/>
+	</div>
+
+	<div id="images">
+	</div>
+	
+	<script>
+	$.getJSON('http://darido.cloudfoundry.com/events', function(data) {
+	  var items = [];
+	console.log(data);
+	  $.each(data, function() {
+		var darido = this;
+		console.log(darido);
+	    items.push('<li style="" id="' + darido.id + '">' + darido.eventDay + " : " + darido.title  +  '</li>');
+	  });
+
+	  $('<ul/>', {
+	    'class': 'my-new-list',
+	    html: items.join('')
+	  }).appendTo('#content');
+	});
+	</script>
+</body>
+</html>
